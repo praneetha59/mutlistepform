@@ -25,7 +25,7 @@ export interface FormContextType {
   updateValues: (newValues: Partial<FormValues>) => void;
   setFieldError: (field: keyof FormValues | string, error: string | null) => void;
   validateStep1: () => boolean;
-  checkEmailUniqueness: (email: string) => Promise<boolean>;
+  checkEmailUniqueness: (email: string) => Promise<'available' | 'taken' | 'error'>;
   applyPromoCode: (code: string) => Promise<boolean>;
   submitForm: () => Promise<boolean>;
   toggleTheme: () => void;
@@ -201,8 +201,8 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Asynchronous Validation: Check email uniqueness against mock Express API
-  const checkEmailUniqueness = async (email: string): Promise<boolean> => {
-    if (!validateEmailString(email)) return false;
+  const checkEmailUniqueness = async (email: string): Promise<'available' | 'taken' | 'error'> => {
+    if (!validateEmailString(email)) return 'error';
     setIsValidatingEmail(true);
 
     try {
@@ -217,7 +217,7 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (data.available === false) {
         setErrors((prev) => ({ ...prev, email: 'This email is already in use' }));
-        return false;
+        return 'taken';
       } else {
         setErrors((prev) => {
           const updated = { ...prev };
@@ -226,13 +226,13 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children
           }
           return updated;
         });
-        return true;
+        return 'available';
       }
     } catch (err) {
       setIsValidatingEmail(false);
       console.error('Failed to validate email uniqueness via API:', err);
       setErrors((prev) => ({ ...prev, email: 'Error checking email availability' }));
-      return false;
+      return 'error';
     }
   };
 

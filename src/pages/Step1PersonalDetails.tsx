@@ -69,8 +69,12 @@ export const Step1PersonalDetails: React.FC = () => {
     }
 
     showToast('Checking email availability...', 'info');
-    const isEmailUnique = await checkEmailUniqueness(values.email);
-    if (!isEmailUnique) {
+    const emailCheckResult = await checkEmailUniqueness(values.email);
+    if (emailCheckResult === 'error') {
+      showToast('Failed to connect to the server for email verification.', 'error');
+      return;
+    }
+    if (emailCheckResult === 'taken') {
       showToast('This email is already in use.', 'error');
       const emailInput = document.getElementsByName('email')[0];
       if (emailInput) {
