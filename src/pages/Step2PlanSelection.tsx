@@ -26,7 +26,7 @@ export const Step2PlanSelection: React.FC = () => {
       showToast('Please select a plan to proceed.', 'error');
       return;
     }
-    navigate('/step3');
+    navigate('/form/step3');
   };
 
   const plans = [
@@ -143,7 +143,7 @@ export const Step2PlanSelection: React.FC = () => {
         <div className="form-footer">
           <button 
             type="button" 
-            onClick={() => navigate('/step1')} 
+            onClick={() => navigate('/form/step1')} 
             className="btn btn-secondary"
           >
             Go Back

@@ -47,7 +47,7 @@ export const Step3AddOns: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/step4');
+    navigate('/form/step4');
   };
 
   return (
@@ -99,7 +99,7 @@ export const Step3AddOns: React.FC = () => {
         <div className="form-footer">
           <button 
             type="button" 
-            onClick={() => navigate('/step2')} 
+            onClick={() => navigate('/form/step2')} 
             className="btn btn-secondary"
           >
             Go Back

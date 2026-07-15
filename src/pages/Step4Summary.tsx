@@ -83,7 +83,7 @@ export const Step4Summary: React.FC = () => {
       const result = await submitForm();
       if (result) {
         showToast('Form submitted successfully!', 'success');
-        navigate('/success');
+        navigate('/form/success');
       }
     } catch (err: any) {
       showToast(err.message || 'An error occurred during submission. Please try again.', 'error');
@@ -105,7 +105,7 @@ export const Step4Summary: React.FC = () => {
               </span>
               <button 
                 type="button" 
-                onClick={() => navigate('/step2')} 
+                onClick={() => navigate('/form/step2')} 
                 className="summary-change-btn"
                 aria-label="Change subscription plan"
               >
@@ -212,7 +212,7 @@ export const Step4Summary: React.FC = () => {
         <div className="form-footer">
           <button 
             type="button" 
-            onClick={() => navigate('/step3')} 
+            onClick={() => navigate('/form/step3')} 
             className="btn btn-secondary"
             disabled={isSubmittingForm}
           >

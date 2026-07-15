@@ -14,7 +14,7 @@ export const Step5Success: React.FC = () => {
   }, []);
 
   const handleRestart = () => {
-    navigate('/step1');
+    navigate('/form/step1');
   };
 
   return (
