@@ -1,0 +1,14 @@
+{
+  "name": "mock-api-server",
+  "version": "1.0.0",
+  "description": "Mock API server for multi-step form validations and submissions",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}
