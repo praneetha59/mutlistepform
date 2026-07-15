@@ -6,9 +6,9 @@ services:
       context: ./server
       dockerfile: backend.Dockerfile
     ports:
-      - "5000:5000"
+      - "4000:4000"
     environment:
-      - PORT=5000
+      - PORT=4000
     volumes:
       - ./server:/app
       - /app/node_modules
@@ -22,7 +22,7 @@ services:
     depends_on:
       - mock-api
     environment:
-      - BACKEND_URL=http://mock-api:5000
+      - BACKEND_URL=http://mock-api:4000
     volumes:
       - .:/app
       - /app/node_modules

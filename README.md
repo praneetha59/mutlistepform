@@ -15,7 +15,7 @@ Welcome to the **Lorem Gaming Multi-Step Subscription Registration Wizard**! Thi
   - Invalid path handling: Redirects all non-existent paths to a dedicated `/404 Page Not Found` view.
 - **State Management**: React Context (`FormContext`) that manages all inputs, validations, active routes, and theme states. Form inputs are synced to `localStorage` in real-time, allowing users to refresh pages without losing progress. Stored state is cleaned up upon final submission.
 - **Styling System**: Centralized Vanilla CSS with a customized HSL color palette. Theme toggles support a dark mode and a light mode, persisting settings in local storage and matching OS preferences.
-- **Mock API Service**: Express.js REST server running on port 5000. Serves actual POST routes `/api/check-email` (uniqueness check), `/api/check-promo` (validates discount codes), and `/api/submit-form` (submits payload).
+- **Mock API Service**: Express.js REST server running on port 4000. Serves actual POST routes `/api/check-email` (uniqueness check), `/api/check-promo` (validates discount codes), and `/api/submit-form` (submits payload).
 
 ### 2. Form Features & Conditional Rendering
 - **Step 1 (Personal Info)**:
@@ -47,7 +47,7 @@ This orchestrates both the frontend server and backend API server containers.
    ```
 3. **Accessing the App**:
    - **Frontend App**: Open [http://localhost:5173](http://localhost:5173) in your browser.
-   - **Mock API server**: Port [http://localhost:5000](http://localhost:5000).
+   - **Mock API server**: Port [http://localhost:4000](http://localhost:4000).
 
 ---
 
@@ -62,7 +62,7 @@ cd server
 # Install dependencies
 npm install
 
-# Start Express server (runs on port 5000)
+# Start Express server (runs on port 4000)
 npm start
 ```
 
@@ -72,7 +72,7 @@ Open a new terminal window:
 # In the root directory, install dependencies
 npm install
 
-# Start Vite dev server (runs on port 5173 and proxies /api to port 5000)
+# Start Vite dev server (runs on port 5173 and proxies /api to port 4000)
 npm start
 ```
 Open [http://localhost:5173](http://localhost:5173) to view the application.
